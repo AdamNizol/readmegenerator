@@ -33,7 +33,7 @@ export default {
         result += "# "+this.title+"\n";
       }
       if(this.demoUrl.trim() != ""){
-        result += "###[Live Demo]("+this.demoUrl+")\n"
+        result += "### [Live Demo]("+this.demoUrl+")\n"
       }
       if(this.desc.trim() != ""){
         result += "\n"+this.desc+"\n\n";
