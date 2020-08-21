@@ -1,12 +1,14 @@
 <template>
   <div class="formBody">
     <h3>Project Title</h3>
-    <textarea></textarea>
+    <input type="text" v-model="title"/>
     <h3>Project Description</h3>
-    <textarea></textarea>
+    <textarea v-model="desc"></textarea>
+    <h3>Demo Link</h3>
+    <input type="text" v-model="demoUrl"/>
     <h3>Setup Instructions:</h3>
     <div>
-      <input type="checkbox" name="useVue" />
+      <input type="checkbox" name="useVue" v-model="useVue" />
       <label for="useVue"> Vue</label>
     </div>
     <button class="generateBtn">Generate</button>
@@ -16,6 +18,14 @@
 <script>
 export default {
   name: "ProjectForm",
+  data: function(){
+    return{
+      title: "",
+      desc: "",
+      demoUrl: "",
+      useVue: false
+    }
+  }
 };
 </script>
 
@@ -26,11 +36,16 @@ export default {
   flex-direction: column;
   align-items: flex-start;
   background-color: rgb(80,80,90);
-  padding: 0.6em;
+  padding: 1em;
   border-radius: 2%;
   color: #e7e7e7;
+  > input, > textarea {
+    width: 100%;
+    font-size: 1em;
+    font-weight: bold;
+  }
   > textarea {
-    min-width: min(80vw, 50em);
+    min-width: min(80vw, 45em);
     min-height: min(20vh, 20em);
   }
   .generateBtn {
