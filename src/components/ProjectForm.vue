@@ -78,7 +78,9 @@ export default {
   align-items: flex-start;
   background-color: rgb(80,80,90);
   padding: 1em;
-  border-radius: 2%;
+  padding-top: 0;
+  border-radius: 0.6%;
+  box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.2);
   > input, > textarea {
     width: 100%;
     font-size: 1em;
@@ -87,6 +89,7 @@ export default {
   > textarea {
     min-width: min(80vw, 45em);
     min-height: min(20vh, 20em);
+    max-width: 95vw;
   }
   .generateBtn {
     margin-left: auto;
