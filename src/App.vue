@@ -22,9 +22,12 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #e7e7e7;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+body{
+  background-color: rgb(30,30,35);
 }
 </style>

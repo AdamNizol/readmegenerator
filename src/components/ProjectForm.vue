@@ -79,7 +79,6 @@ export default {
   background-color: rgb(80,80,90);
   padding: 1em;
   border-radius: 2%;
-  color: #e7e7e7;
   > input, > textarea {
     width: 100%;
     font-size: 1em;
