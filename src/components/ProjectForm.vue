@@ -11,7 +11,7 @@
       <input type="checkbox" name="useVue" v-model="useVue" />
       <label for="useVue"> Vue</label>
     </div>
-    <button class="generateBtn">Generate</button>
+    <button class="generateBtn" @click="downloadFile">Generate</button>
   </div>
 </template>
 
@@ -24,6 +24,47 @@ export default {
       desc: "",
       demoUrl: "",
       useVue: false
+    }
+  },
+  methods: {
+    generateFileText(){
+      let result = ""
+      if(this.title.trim() != ""){
+        result += "# "+this.title+"\n";
+      }
+      if(this.demoUrl.trim() != ""){
+        result += this.demoUrl+"\n"
+      }
+      if(this.desc.trim() != ""){
+        result += "\n"+this.desc+"\n\n";
+      }
+      if(this.useVue){
+        result +="## Project Setup\n```\nnpm install\n```\n\n### Compiles and hot-reloads for development\n```\nnpm run serve\n```\n\n### Compiles and minifies for production\n```\nnpm run build\n``` "
+      }
+
+      return result
+    },
+    downloadFile(){
+      let data = this.generateFileText();
+      let filename = "README.md"
+
+      //adapted from https://stackoverflow.com/questions/9208657/how-to-create-downloadable-link-to-text-file
+      let file = new Blob([data], {type: "text/plain"});
+      if (window.navigator.msSaveOrOpenBlob) // IE10+
+          window.navigator.msSaveOrOpenBlob(file, filename);
+      else { // Others
+          let a = document.createElement("a"),
+          url = URL.createObjectURL(file);
+          a.href = url;
+          a.download = filename;
+          document.body.appendChild(a);
+          a.click();
+          setTimeout(function() {
+              document.body.removeChild(a);
+              window.URL.revokeObjectURL(url);
+          }, 0);
+      }
+
     }
   }
 };
